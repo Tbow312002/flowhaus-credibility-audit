@@ -133,6 +133,17 @@
   </p>
 
   <form id="auditForm">
+  <div class="q" style="border-bottom:none; padding-bottom:0;">
+    <p>Website URL (optional)</p>
+    <input
+      type="url"
+      id="siteUrl"
+      name="siteUrl"
+      placeholder="https://example.com"
+      style="width:100%; max-width:520px; padding:10px 12px; border:1px solid #ddd; border-radius:10px;"
+    />
+  </div>
+
     <fieldset>
       <legend>Clarity</legend>
 
@@ -239,6 +250,7 @@
 
   <div id="results" hidden>
     <h2>Results</h2>
+        <p class="muted" id="siteUrlDisplay" hidden></p>
 
   <div class="results-actions">
     <button type="button" id="copyResultsBtn">Copy Results</button>
@@ -371,6 +383,17 @@
       const total = clarity + proof + design + conversion;
 
       document.getElementById("results").hidden = false;
+      const url = document.getElementById("siteUrl")?.value.trim();
+      const urlLine = document.getElementById("siteUrlDisplay");
+
+      if (url && urlLine) {
+        urlLine.hidden = false;
+        urlLine.textContent = `Website: ${url}`;
+      } else if (urlLine) {
+        urlLine.hidden = true;
+        urlLine.textContent = "";
+     }
+
       document.getElementById("totalScore").textContent = `Credibility Score: ${total}/100`;
       document.getElementById("verdict").textContent = `Verdict: ${verdictText(total)}`;
       document.getElementById("clarityScore").textContent = `Clarity: ${clarity}/25`;
@@ -408,6 +431,12 @@
       document.getElementById("auditForm").reset();
       document.getElementById("results").hidden = true;
       document.getElementById("fixesList").innerHTML = "";
+      const urlLine = document.getElementById("siteUrlDisplay");
+      if (urlLine) {
+        urlLine.hidden = true;
+        urlLine.textContent = "";
+    }
+
       window.scrollTo({top:0,behavior:"smooth"});
     });
   </script>
