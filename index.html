@@ -269,6 +269,18 @@
 
     <h3>Top 3 Fixes</h3>
     <ul id="fixesList"></ul>
+  <div id="ctaBox" style="margin-top:14px; padding:14px; border:1px solid #ddd; border-radius:12px;">
+    <h3 style="margin:0 0 6px 0;">Want a fast teardown?</h3>
+    <p class="muted" style="margin:0 0 10px 0;">
+      I’ll review your homepage and send back the top credibility leaks + a simple fix plan.
+    </p>
+    <ul style="margin:0 0 10px 18px;">
+      <li><strong>Free:</strong> 3-minute Loom-style feedback</li>
+      <li><strong>Paid:</strong> Full FlowHaus Credibility Audit (score + prioritized fixes)</li>
+    </ul>
+    <p class="muted" style="margin:0;">
+      Email: <strong>tbow312002@yahoo.com</strong> • Include your website + your score
+    </p>
   </div>
 
   <footer>
@@ -381,7 +393,12 @@
       const conversion = to25(getVal("q10")+getVal("q11")+getVal("q12"));
 
       const total = clarity + proof + design + conversion;
-
+      const cta = document.getElementById("ctaBox");
+      if (cta) {
+        const url = document.getElementById("siteUrl")?.value.trim() || "(no URL entered)";
+        cta.querySelector("p.muted:last-of-type").innerHTML =
+          `Email: <strong>YOUR_EMAIL_HERE</strong> • Include your website + your score<br><strong>Copy/paste:</strong> ${url} — Score: ${total}/100`;
+}
       document.getElementById("results").hidden = false;
       const url = document.getElementById("siteUrl")?.value.trim();
       const urlLine = document.getElementById("siteUrlDisplay");
