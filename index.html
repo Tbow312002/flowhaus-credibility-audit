@@ -1,1 +1,301 @@
-<!-- placeholder -->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FlowHaus Credibility Audit</title>
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      margin: 24px;
+      max-width: 900px;
+    }
+    h1 { margin-bottom: 4px; }
+    .muted { color: #555; margin-top: 0; }
+
+    fieldset {
+      margin: 18px 0;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+    }
+    legend {
+      font-weight: 700;
+      padding: 0 6px;
+    }
+    .q {
+      margin: 14px 0;
+      padding-bottom: 12px;
+      border-bottom: 1px dashed #eee;
+    }
+    .q:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .q p {
+      margin: 0 0 8px 0;
+      font-weight: 600;
+    }
+    label { margin-right: 12px; }
+
+    button {
+      padding: 10px 14px;
+      font-weight: 700;
+      border-radius: 10px;
+      border: 1px solid #111;
+      cursor: pointer;
+      margin-right: 8px;
+    }
+
+    #results {
+      margin-top: 18px;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid #ddd;
+    }
+
+    footer {
+      margin-top: 28px;
+      color: #666;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>FlowHaus Credibility Audit</h1>
+  <p class="muted">
+    Answer 12 quick questions. Get a credibility score and the top fixes holding your site back.
+  </p>
+
+  <form id="auditForm">
+
+    <fieldset>
+      <legend>Clarity</legend>
+
+      <div class="q">
+        <p>1) Within 5 seconds, is it obvious who you help and what you do?</p>
+        <label><input type="radio" name="q1" value="2" required> Yes</label>
+        <label><input type="radio" name="q1" value="1"> Somewhat</label>
+        <label><input type="radio" name="q1" value="0"> No</label>
+      </div>
+
+      <div class="q">
+        <p>2) Is there a clear value-driven headline (not just a slogan)?</p>
+        <label><input type="radio" name="q2" value="2" required> Yes</label>
+        <label><input type="radio" name="q2" value="1"> Somewhat</label>
+        <label><input type="radio" name="q2" value="0"> No</label>
+      </div>
+
+      <div class="q">
+        <p>3) Do you offer one primary service instead of many competing options?</p>
+        <label><input type="radio" name="q3" value="2" required> Yes</label>
+        <label><input type="radio" name="q3" value="1"> Somewhat</label>
+        <label><input type="radio" name="q3" value="0"> No</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Proof</legend>
+
+      <div class="q">
+        <p>4) Do you show testimonials, reviews, or client quotes?</p>
+        <label><input type="radio" name="q4" value="2" required> Yes</label>
+        <label><input type="radio" name="q4" value="1"> Somewhat</label>
+        <label><input type="radio" name="q4" value="0"> No</label>
+      </div>
+
+      <div class="q">
+        <p>5) Do you show examples, case studies, or a portfolio?</p>
+        <label><input type="radio" name="q5" value="2" required> Yes</label>
+        <label><input type="radio" name="q5" value="1"> Somewhat</label>
+        <label><input type="radio" name="q5" value="0"> No</label>
+      </div>
+
+      <div class="q">
+        <p>6) Do you display trust markers (years, certifications, stats, logos)?</p>
+        <label><input type="radio" name="q6" value="2" required> Yes</label>
+        <label><input type="radio" name="q6" value="1"> Somewhat</label>
+        <label><input type="radio" name="q6" value="0"> No</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Design Trust</legend>
+
+      <div class="q">
+        <p>7) Does the site feel modern and clean on mobile?</p>
+        <label><input type="radio" name="q7" value="2" required> Yes</label>
+        <label><input type="radio" name="q7" value="1"> Somewhat</label>
+        <label><input type="radio" name="q7" value="0"> No</label>
+      </div>
+
+      <div class="q">
+        <p>8) Is branding consistent across fonts, colors, and visuals?</p>
+        <label><input type="radio" name="q8" value="2" required> Yes</label>
+        <label><input type="radio" name="q8" value="1"> Somewhat</label>
+        <label><input type="radio" name="q8" value="0"> No</label>
+      </div>
+
+      <div class="q">
+        <p>9) Does everything load correctly without typos or broken layouts?</p>
+        <label><input type="radio" name="q9" value="2" required> Yes</label>
+        <label><input type="radio" name="q9" value="1"> Somewhat</label>
+        <label><input type="radio" name="q9" value="0"> No</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Conversion Path</legend>
+
+      <div class="q">
+        <p>10) Is there one clear call-to-action on the homepage?</p>
+        <label><input type="radio" name="q10" value="2" required> Yes</label>
+        <label><input type="radio" name="q10" value="1"> Somewhat</label>
+        <label><input type="radio" name="q10" value="0"> No</label>
+      </div>
+
+      <div class="q">
+        <p>11) Is it easy to understand the next step or pricing?</p>
+        <label><input type="radio" name="q11" value="2" required> Yes</label>
+        <label><input type="radio" name="q11" value="1"> Somewhat</label>
+        <label><input type="radio" name="q11" value="0"> No</label>
+      </div>
+
+      <div class="q">
+        <p>12) Is contacting you fast and frictionless?</p>
+        <label><input type="radio" name="q12" value="2" required> Yes</label>
+        <label><input type="radio" name="q12" value="1"> Somewhat</label>
+        <label><input type="radio" name="q12" value="0"> No</label>
+      </div>
+    </fieldset>
+
+    <button type="submit">Calculate Score</button>
+    <button type="button" id="resetBtn">Reset</button>
+  </form>
+
+  <div id="results" hidden>
+    <h2>Results</h2>
+
+    <div class="grid">
+      <span class="pill" id="totalScore">Credibility Score: --</span>
+      <span class="pill" id="verdict">Verdict: --</span>
+      <span class="pill" id="clarityScore">Clarity: --/25</span>
+      <span class="pill" id="proofScore">Proof: --/25</span>
+      <span class="pill" id="designScore">Design Trust: --/25</span>
+      <span class="pill" id="conversionScore">Conversion Path: --/25</span>
+    </div>
+
+    <h3>Top 3 Fixes</h3>
+    <ul id="fixesList"></ul>
+  </div>
+
+  <footer>
+    Built by FlowHaus — credibility-first audits.
+  </footer>
+
+  <script>
+    const FIXES = {
+      clarity: [
+        "Rewrite your headline to clearly state who you help and the result.",
+        "Reduce competing services to one primary offer.",
+        "Add a simple 'How it works' section above the fold."
+      ],
+      proof: [
+        "Add 3 short testimonials or quotes.",
+        "Show one real example or case study.",
+        "Add trust markers like years, certifications, or results."
+      ],
+      design: [
+        "Standardize fonts and spacing.",
+        "Improve mobile layout and alignment.",
+        "Fix typos and broken sections."
+      ],
+      conversion: [
+        "Choose one CTA and repeat it clearly.",
+        "Reduce friction with a short form or scheduler.",
+        "Explain the next step in 3 simple bullets."
+      ]
+    };
+
+    const getVal = name =>
+      Number(document.querySelector(`input[name="${name}"]:checked`)?.value || 0);
+
+    const to25 = pts => Math.round((pts / 6) * 25);
+
+    const verdictText = score =>
+      score >= 80 ? "Strong credibility — optimize conversion."
+      : score >= 60 ? "Good foundation — trust gaps cost leads."
+      : score >= 40 ? "Credibility leaks — visitors hesitate."
+      : "Trust is broken — fix fundamentals first.";
+
+    document.getElementById("auditForm").addEventListener("submit", e => {
+      e.preventDefault();
+
+      const clarity = to25(getVal("q1")+getVal("q2")+getVal("q3"));
+      const proof = to25(getVal("q4")+getVal("q5")+getVal("q6"));
+      const design = to25(getVal("q7")+getVal("q8")+getVal("q9"));
+      const conversion = to25(getVal("q10")+getVal("q11")+getVal("q12"));
+
+      const total = clarity + proof + design + conversion;
+
+      document.getElementById("results").hidden = false;
+      document.getElementById("totalScore").textContent = `Credibility Score: ${total}/100`;
+      document.getElementById("verdict").textContent = `Verdict: ${verdictText(total)}`;
+      document.getElementById("clarityScore").textContent = `Clarity: ${clarity}/25`;
+      document.getElementById("proofScore").textContent = `Proof: ${proof}/25`;
+      document.getElementById("designScore").textContent = `Design Trust: ${design}/25`;
+      document.getElementById("conversionScore").textContent = `Conversion Path: ${conversion}/25`;
+
+      const ordered = [
+        ["clarity", clarity],
+        ["proof", proof],
+        ["design", design],
+        ["conversion", conversion]
+      ].sort((a,b)=>a[1]-b[1]);
+
+      const fixes = [];
+      for (const [bucket] of ordered) {
+        for (const f of FIXES[bucket]) {
+          if (fixes.length < 3) fixes.push(f);
+        }
+        if (fixes.length === 3) break;
+      }
+
+      const ul = document.getElementById("fixesList");
+      ul.innerHTML = "";
+      fixes.forEach(f => {
+        const li = document.createElement("li");
+        li.textContent = f;
+        ul.appendChild(li);
+      });
+
+      document.getElementById("results").scrollIntoView({behavior:"smooth"});
+    });
+
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      document.getElementById("auditForm").reset();
+      document.getElementById("results").hidden = true;
+      document.getElementById("fixesList").innerHTML = "";
+      window.scrollTo({top:0,behavior:"smooth"});
+    });
+  </script>
+
+</body>
+</html>
