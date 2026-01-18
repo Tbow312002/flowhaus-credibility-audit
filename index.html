@@ -112,6 +112,36 @@
   }
 }
 
+.cta{
+  margin: 14px 0 18px;
+  padding: 14px;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  background: #fafafa;
+}
+.cta-row{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+  margin-top:10px;
+}
+#leadEmail{
+  flex: 1;
+  min-width: 240px;
+  padding: 10px 12px;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 10px;
+  font-size: 1rem;
+}
+#sendChecklistBtn{
+  padding: 10px 12px;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
   </style>
 </head>
 
@@ -274,6 +304,29 @@
 
   <span id="copyStatus" class="muted" aria-live="polite"></span>
 </div>
+<div id="ctaBlock" class="cta">
+  <h3>Want the fixes as a checklist?</h3>
+  <p class="muted">
+    Drop your email and I’ll send your score + Top 3 fixes as a simple next-step checklist.
+  </p>
+
+  <div class="cta-row">
+    <input
+      type="email"
+      id="leadEmail"
+      placeholder="you@example.com"
+      autocomplete="email"
+      inputmode="email"
+    />
+    <button type="button" id="sendChecklistBtn">Send my checklist</button>
+  </div>
+
+  <p class="muted" style="margin-top:8px;">
+    No spam. Just your results + recommended next steps. Prefer not to share email? Use <strong>Copy Results</strong>.
+  </p>
+
+  <p id="sendStatus" class="muted" aria-live="polite"></p>
+</div>
 
   </div>
 
@@ -409,6 +462,70 @@
         }
       });
     })();
+(function setupSendChecklist(){
+  const emailInput = document.getElementById('leadEmail');
+  const sendBtn = document.getElementById('sendChecklistBtn');
+  const sendStatus = document.getElementById('sendStatus');
+
+  if (!emailInput || !sendBtn || !sendStatus) return;
+
+  function setSendStatus(msg){
+    sendStatus.textContent = msg || '';
+    if (msg) setTimeout(() => { sendStatus.textContent = ''; }, 3000);
+  }
+
+  function getResultsTextForEmail(){
+    const results = document.getElementById('results');
+    if (!results) return '';
+
+    const clone = results.cloneNode(true);
+
+    const actions = clone.querySelector('.results-actions');
+    if (actions) actions.remove();
+
+    const cta = clone.querySelector('#ctaBlock');
+    if (cta) cta.remove();
+
+    let text = clone.innerText
+      .replace(/\n{3,}/g, '\n\n')
+      .trim();
+
+    return text;
+  }
+
+  function isValidEmail(val){
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.trim());
+  }
+
+  sendBtn.addEventListener('click', () => {
+    const lead = emailInput.value.trim();
+
+    if (!isValidEmail(lead)) {
+      setSendStatus('Enter a valid email.');
+      emailInput.focus();
+      return;
+    }
+
+    const to = 'terrencebowen742@gmail.com';
+    const subject = 'FlowHaus Credibility Audit — Checklist Request';
+    const body =
+`Hi Terry,
+
+Please send me the checklist + next steps based on my audit results.
+
+My email: ${lead}
+
+--- Results ---
+${getResultsTextForEmail()}
+
+Thanks!`;
+
+    const mailto = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+
+    setSendStatus('Opening your email app… hit Send to request your checklist.');
+  });
+})();
 
     const getVal = name =>
       Number(document.querySelector(`input[name="${name}"]:checked`)?.value || 0);
