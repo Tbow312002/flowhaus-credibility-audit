@@ -429,8 +429,6 @@
 
   return lines.join('\n');
 }
-
-
       async function copyText(text){
         if (navigator.clipboard && window.isSecureContext) {
           await navigator.clipboard.writeText(text);
@@ -613,6 +611,40 @@ Thanks!`;
     if (printBtn) {
       printBtn.addEventListener("click", () => window.print());
   }
-  </script>
+  console.log("Email handler booting...");
+
+  const emailBtn = document.getElementById("emailResultsBtn");
+  console.log("emailResultsBtn found:", emailBtn);
+
+  if (emailBtn) {
+    emailBtn.addEventListener("click", () => {
+      // Require results to be shown first
+      const resultsBox = document.getElementById("results");
+      if (resultsBox && resultsBox.hidden) {
+        alert("Run the audit first so we can generate results.");
+        return;
+      }
+
+      const total = document.getElementById("totalScore")?.textContent || "";
+      const verdict = document.getElementById("verdict")?.textContent || "";
+      const fixes = Array.from(document.querySelectorAll("#fixesList li"))
+        .map(li => li.textContent);
+
+      const body = [
+        "FlowHaus Credibility Audit — Results",
+        "",
+        total,
+        verdict,
+        "",
+        "Top Fixes:",
+        ...fixes.map((f,i)=>`${i+1}) ${f}`)
+      ].join("\n");
+
+      window.location.href =
+        `mailto:?subject=${encodeURIComponent("My FlowHaus Credibility Audit Results")}` +
+        `&body=${encodeURIComponent(body)}`;
+    });
+  }
+</script>  
 </body>
 </html>
