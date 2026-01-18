@@ -351,23 +351,33 @@
       }
 
       function buildResultsText(){
-        const clone = results.cloneNode(true);
-        const actions = clone.querySelector('.results-actions');
-        if (actions) actions.remove();
+  const lines = [];
+  lines.push('FlowHaus Credibility Audit — Results');
+  lines.push('');
 
-        let text = clone.innerText
-          .replace(/\n{3,}/g, '\n\n')
-          .trim();
+  const safeText = (id) => (document.getElementById(id)?.textContent || '').trim();
 
-        const header = 'FlowHaus Credibility Audit — Results';
-        return `${header}\n\n${text}`;
-      }
-	const printBtn = document.getElementById('printBtn');
-        if (printBtn) {
-          printBtn.addEventListener('click', () => {
-            window.print();
-          });
-      }
+  lines.push(safeText('totalScore'));
+  lines.push(safeText('verdict'));
+  lines.push('');
+
+  lines.push(safeText('clarityScore'));
+  lines.push(safeText('proofScore'));
+  lines.push(safeText('designScore'));
+  lines.push(safeText('conversionScore'));
+  lines.push('');
+
+  lines.push('Top 3 Fixes:');
+  const fixes = Array.from(document.querySelectorAll('#fixesList li'))
+    .map(li => li.textContent.trim())
+    .filter(Boolean);
+
+  if (fixes.length === 0) lines.push('- (none)');
+  fixes.forEach(f => lines.push(`- ${f}`));
+
+  return lines.join('\n');
+}
+
 
       async function copyText(text){
         if (navigator.clipboard && window.isSecureContext) {
