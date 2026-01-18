@@ -256,9 +256,37 @@
     <button type="button" id="copyResultsBtn">Copy Results</button>
     <button type="button" id="printBtn">Save as PDF</button>
     <span id="copyStatus" class="muted" aria-live="polite"></span>
+  <div class="results-actions">
+    <button type="button" id="copyResultsBtn">Copy Results</button>
+    <button type="button" id="printBtn">Save as PDF</button>
+
+    <input
+     type="email"
+     id="leadEmail"
+     placeholder="your@email.com"
+     inputmode="email"
+     autocomplete="email"
+  />
+
+  <button type="button" id="emailResultsBtn">
+    Email Me My Results
+  </button>
+
+  <span id="copyStatus" class="muted" aria-live="polite"></span>
+</div>
+
   </div>
 
     <div class="grid">
+    <input
+      type="email"
+      id="leadEmail"
+      placeholder="your@email.com"
+      inputmode="email"
+      autocomplete="email"
+/>
+<button type="button" id="emailResultsBtn">Email Me My Results</button>
+
       <span class="pill" id="totalScore">Credibility Score: --</span>
       <span class="pill" id="verdict">Verdict: --</span>
       <span class="pill" id="clarityScore">Clarity: --/25</span>
