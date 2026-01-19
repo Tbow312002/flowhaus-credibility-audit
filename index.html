@@ -355,6 +355,37 @@ Credibility-first website audits`
   window.location.href =
     `mailto:terrencebowen742@gmail.com?subject=${subject}&body=${body}`;
 });
+
+// Email Results handler
+document.getElementById("emailResultsBtn")?.addEventListener("click", () => {
+  const email = document.getElementById("leadEmail")?.value || "";
+  if (!email) {
+    alert("Please enter your email address first.");
+    return;
+  }
+
+  const scoreText =
+    document.getElementById("totalScore")?.textContent || "Score unavailable";
+
+  const siteText =
+    document.getElementById("siteUrlDisplay")?.textContent || "No URL provided";
+
+  const subject = encodeURIComponent("My FlowHaus Credibility Audit Results");
+
+  const body = encodeURIComponent(
+    `Hi FlowHaus,
+
+I just completed the credibility audit and would like a clarity check.
+
+${scoreText}
+Website: ${siteText}
+
+Thank you!`
+  );
+
+  window.location.href = `mailto:terrencebowen742@gmail.com?subject=${subject}&body=${body}`;
+});
+
 </script>
 
 <div id="ctaBlock" class="cta">
