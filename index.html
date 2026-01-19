@@ -278,14 +278,24 @@
     <button type="button" id="resetBtn">Reset</button>
   </form>
 
-  <div id="results" hidden>
-    <h2>Results</h2>
-        <p class="muted" id="siteUrlDisplay" hidden></p>
+<div id="results" hidden>
+  <h2>Results</h2>
 
-  <div class="results-actions">
-  <button type="button" id="copyResultsBtn">Copy Results</button>
-  <button type="button" id="printBtn">Save as PDF</button>
+  <p class="muted" id="siteUrlDisplay" hidden></p>
 
+  <!-- CTA COPY -->
+  <h3>Want a clarity check on your website?</h3>
+
+  <p class="muted">
+    I’ll personally review your homepage and send back the key credibility gaps —
+    plus clear, practical next steps to move forward.
+  </p>
+
+  <p class="muted">
+    Enter your email and website. I’ll include your audit score in the response.
+  </p>
+
+  <!-- LEAD CAPTURE -->
   <input
     type="email"
     id="leadEmail"
@@ -298,7 +308,12 @@
     Email Me My Results
   </button>
 
-  <span id="copyStatus" class="muted" aria-live="polite"></span>
+  <!-- ACTIONS -->
+  <div class="results-actions">
+    <button type="button" id="copyResultsBtn">Copy Results</button>
+    <button type="button" id="printBtn">Save as PDF</button>
+    <span id="copyStatus" class="muted" aria-live="polite"></span>
+  </div>
 </div>
 
 <script>
