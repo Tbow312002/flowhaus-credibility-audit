@@ -301,6 +301,47 @@
   <span id="copyStatus" class="muted" aria-live="polite"></span>
 </div>
 
+<script>
+document.getElementById("emailResultsBtn").addEventListener("click", () => {
+  const email = document.getElementById("leadEmail").value.trim();
+
+  if (!email) {
+    alert("Please enter your email.");
+    return;
+  }
+
+  const subject = encodeURIComponent(
+    "Your FlowHaus Credibility Audit Results"
+  );
+
+  const body = encodeURIComponent(
+`FlowHaus Credibility Audit Results
+
+Email: ${email}
+
+${document.getElementById("totalScore").innerText}
+${document.getElementById("verdict").innerText}
+
+${document.getElementById("clarityScore").innerText}
+${document.getElementById("proofScore").innerText}
+${document.getElementById("designScore").innerText}
+${document.getElementById("conversionScore").innerText}
+
+Top Fixes:
+${Array.from(document.querySelectorAll("#fixesList li"))
+  .map(li => "- " + li.innerText)
+  .join("\n")}
+
+—
+FlowHaus
+Credibility-first website audits`
+  );
+
+  window.location.href =
+    `mailto:terrencebowen742@gmail.com?subject=${subject}&body=${body}`;
+});
+</script>
+
 <div id="ctaBlock" class="cta">
   <h3>Want the fixes as a checklist?</h3>
   <p class="muted">
